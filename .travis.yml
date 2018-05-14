@@ -1,35 +1,35 @@
-os:
-  - linux
-  - osx
-
-language:
-  - python
-  - c
-
-python:
-  - 2.7
-  - 3.6
-
 env:
   global:
     - PYINSTALLER_DEVELOP=https://github.com/pyinstaller/pyinstaller/archive/develop.zip
   matrix:
-    - PYTHON_VERSION=2.7 PYINSTALLER_VERSION=3.3.1
-    - PYTHON_VERSION=2.7 PYINSTALLER_VERSION=$PYINSTALLER_DEVELOP
-    - PYTHON_VERSION=3.6 PYINSTALLER_VERSION=3.3.1
-    - PYTHON_VERSION=3.6 PYINSTALLER_VERSION=$PYINSTALLER_DEVELOP
+    - PYINSTALLER_VERSION=3.3.1
+    - PYINSTALLER_VERSION=$PYINSTALLER_DEVELOP
 
 matrix:
-  exclude:
-    - os: osx
-      language: python
+  include:
     - os: linux
+      language: python
+      python: 2.7
+    - os: linux
+      language: python
+      python: 3.6
+    - os: osx
       language: c
+      env: PYTHON_VERSION=2.7 PYINSTALLER_VERSION=3.3.1
+    - os: osx
+      language: c
+      env: PYTHON_VERSION=2.7 PYINSTALLER_VERSION=3.3.1
+    - os: osx
+      language: c
+      env: PYTHON_VERSION=3.6 PYINSTALLER_VERSION=$PYINSTALLER_DEVELOP
+    - os: osx
+      language: c
+      env: PYTHON_VERSION=3.6 PYINSTALLER_VERSION=$PYINSTALLER_DEVELOP
 
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install $PYTHON_VERSION ; done
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global $PYTHON_VERSION ; done
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install $PYTHON_VERSION ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global $PYTHON_VERSION ; fi
 
 install:
   - pip install -r requirements.txt
