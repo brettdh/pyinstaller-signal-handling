@@ -1,6 +1,8 @@
 #!/bin/bash
 
-pyinstaller -y main.py
+pyinstaller -y main.py || exit 1
+
+_fail=
 
 for _bin in "./main.py" "./dist/main/main"; do
     for _sig in "HUP" "USR1" "USR2"; do
@@ -14,7 +16,10 @@ for _bin in "./main.py" "./dist/main/main"; do
         if [[ $? == 0 ]]; then
             echo "...pass"
         else
+            _fail=1
             echo "...fail"
         fi
     done
 done
+
+[[ -z ${_fail} ]] || exit 1
