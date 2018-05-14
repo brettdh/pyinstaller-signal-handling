@@ -6,7 +6,7 @@ _version=${PYINSTALLER_VERSION}
 
 if [[ "${_version}" == "develop" ]]; then
     pip install ${_pyinstaller_develop}
-else if [[ -n ${_version} ]]; then
+elif [[ -n ${_version} ]]; then
     pip install pyinstaller==${_version}
 else
     echo >&2 "Must define PYINSTALLER_VERSION"
