@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "pyinstaller version: $(pyinstaller --version)"
 pyinstaller -y main.py || exit 1
 
 _fail=

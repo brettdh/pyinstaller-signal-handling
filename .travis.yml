@@ -1,3 +1,7 @@
+env:
+  - PYINSTALLER_VERSION=3.3.1
+  - PYINSTALLER_VERSION=https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+
 matrix:
   include:
     - os: linux
@@ -20,6 +24,7 @@ before_install:
 
 install:
   - pip install -r requirements.txt
+  - pip install pyinstaller=$PYINSTALLER_VERSION
 
 script:
   - ./test.sh
