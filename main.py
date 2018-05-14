@@ -23,4 +23,5 @@ while running:
     r = requests.get('https://httpbin.org/get')
     print('  | {} {} {}'.format(r.status_code, r.reason, r.url))
 
-    time.sleep(60)
+    for _ in range(60):
+        time.sleep(1)
