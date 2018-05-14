@@ -22,16 +22,16 @@ matrix:
       env: PYINSTALLER_VERSION=develop
     - os: osx
       language: c
-      env: PYENV_VERSION=2.7 PYINSTALLER_VERSION=3.3.1
+      env: PYENV_VERSION=2.7.14 PYINSTALLER_VERSION=3.3.1
     - os: osx
       language: c
-      env: PYENV_VERSION=2.7 PYINSTALLER_VERSION=develop
+      env: PYENV_VERSION=2.7.14 PYINSTALLER_VERSION=develop
     - os: osx
       language: c
-      env: PYENV_VERSION=3.6 PYINSTALLER_VERSION=3.3.1
+      env: PYENV_VERSION=3.6.3 PYINSTALLER_VERSION=3.3.1
     - os: osx
       language: c
-      env: PYENV_VERSION=3.6 PYINSTALLER_VERSION=develop
+      env: PYENV_VERSION=3.6.3 PYINSTALLER_VERSION=develop
 
 
 before_install:
