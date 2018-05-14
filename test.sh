@@ -7,7 +7,7 @@ _fail=
 
 for _bin in "./main.py" "./dist/main/main"; do
     for _sig in "HUP" "USR1" "USR2"; do
-        echo "Testing SIG${_sig}..."
+        echo "Testing ${_bin} with SIG${_sig}..."
         ${_bin} &
         _pid=$!
 

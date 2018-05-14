@@ -1,3 +1,7 @@
+env:
+  global:
+    PYTHON_CONFIGURE_OPTS="--enable-shared"
+
 matrix:
   include:
     - os: linux
@@ -18,21 +22,22 @@ matrix:
       env: PYINSTALLER_VERSION=develop
     - os: osx
       language: c
-      env: PYTHON_VERSION=2.7 PYINSTALLER_VERSION=3.3.1
+      env: PYENV_VERSION=2.7 PYINSTALLER_VERSION=3.3.1
     - os: osx
       language: c
-      env: PYTHON_VERSION=2.7 PYINSTALLER_VERSION=develop
+      env: PYENV_VERSION=2.7 PYINSTALLER_VERSION=develop
     - os: osx
       language: c
-      env: PYTHON_VERSION=3.6 PYINSTALLER_VERSION=3.3.1
+      env: PYENV_VERSION=3.6 PYINSTALLER_VERSION=3.3.1
     - os: osx
       language: c
-      env: PYTHON_VERSION=3.6 PYINSTALLER_VERSION=develop
+      env: PYENV_VERSION=3.6 PYINSTALLER_VERSION=develop
 
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install $PYTHON_VERSION ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global $PYTHON_VERSION ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install $PYENV_VERSION ; fi
+  - python --version
+  - pip --version
 
 install:
   - pip install -r requirements.txt
