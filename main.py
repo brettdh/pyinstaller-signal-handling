@@ -25,3 +25,5 @@ while running:
 
     for _ in range(60):
         time.sleep(1)
+        if not running:
+            break
