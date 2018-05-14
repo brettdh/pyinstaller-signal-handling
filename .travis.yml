@@ -8,12 +8,12 @@ matrix:
       python: 3.6
     - os: osx
       env: PYTHON_VERSION=2.7
-      before_script:
-        - .travis/bootstrap-osx.sh
     - os: osx
       env: PYTHON_VERSION=3.6
-      before_script:
-        - .travis/bootstrap-osx.sh
+
+
+before_install:
+  - .travis/bootstrap-osx.sh
 
 install:
   - pip install -r requirements.txt

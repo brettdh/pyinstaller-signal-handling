@@ -1,6 +1,8 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
-brew update
-brew install pyenv
-pyenv install ${PYTHON_VERSION}
-pyenv global ${PYTHON_VERSION}
+if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    brew update
+    brew install pyenv
+    pyenv install ${PYTHON_VERSION}
+    pyenv global ${PYTHON_VERSION}
+fi
