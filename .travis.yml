@@ -8,8 +8,10 @@ matrix:
       python: 3.6
     - os: osx
       env: PYTHON_VERSION=2.7
+      language: c
     - os: osx
       env: PYTHON_VERSION=3.6
+      language: c
 
 
 before_install:
