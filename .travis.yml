@@ -35,9 +35,11 @@ matrix:
 
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install $PYENV_VERSION ; fi
-  - python --version
-  - pip --version
+  - |
+      if [[ -n "$PYENV_VERSION" ]]; then
+        wget https://github.com/praekeltfoundation/travis-pyenv/releases/download/0.4.0/setup-pyenv.sh
+        source setup-pyenv.sh
+      fi
 
 install:
   - pip install -r requirements.txt
