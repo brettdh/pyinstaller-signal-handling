@@ -1,20 +1,29 @@
+os:
+  - linux
+  - osx
+
+language:
+  - python
+  - c
+
+python:
+  - 2.7
+  - 3.6
+
 env:
-  - PYINSTALLER_VERSION=3.3.1
-  - PYINSTALLER_VERSION=https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+  global:
+    - PYINSTALLER_DEVELOP=https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+  matrix:
+    - PYTHON_VERSION=2.7 PYINSTALLER_VERSION=3.3.1
+    - PYTHON_VERSION=2.7 PYINSTALLER_VERSION=$PYINSTALLER_DEVELOP
+    - PYTHON_VERSION=3.6 PYINSTALLER_VERSION=3.3.1
+    - PYTHON_VERSION=3.6 PYINSTALLER_VERSION=$PYINSTALLER_DEVELOP
 
 matrix:
-  include:
-    - os: linux
-      language: python
-      python: 2.7
-    - os: linux
-      language: python
-      python: 3.6
+  exclude:
     - os: osx
-      env: PYTHON_VERSION=2.7
-      language: c
-    - os: osx
-      env: PYTHON_VERSION=3.6
+      language: python
+    - os: linux
       language: c
 
 
