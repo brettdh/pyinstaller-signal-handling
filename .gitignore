@@ -3,3 +3,4 @@ venv
 .vscode
 
 main.spec
+dist-onefile

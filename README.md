@@ -29,6 +29,11 @@ the difference in behavior.
 This [TravisCI build] shows the results. Curiously, the signals are handled as expected
 on macOS; the crash manifests on Linux.
 
+**Update**: further testing shows that the signals are handled correctly on macOS
+only in the default `--onedir` operation, because the bootloader does not fork.
+In `--onefile` mode (which is now part of the test), the bootloader does fork,
+and the crash occurs.
+
 [TravisCI build]: https://travis-ci.org/brettdh/pyinstaller-signal-handling
 
 ## Running the test
